@@ -98,12 +98,12 @@ namespace StarryEyes
                 // remove update binary
                 AutoUpdateService.PostUpdate();
             }
-            else if (AutoUpdateService.IsUpdateBinaryExisted())
-            {
-                // execute auto-update
-                AutoUpdateService.StartUpdate(App.Version);
-                Environment.Exit(0);
-            }
+            //else if (AutoUpdateService.IsUpdateBinaryExisted())
+            //{
+            //    // execute auto-update
+            //    AutoUpdateService.StartUpdate(App.Version);
+            //    Environment.Exit(0);
+            //}
 
             try
             {
