@@ -42,6 +42,8 @@ namespace StarryEyes.Anomaly.TwitterApi.DataModels
                 var urls = json.urls;
                 foreach (var url in urls)
                 {
+                    if (!url.url()) continue;
+
                     string display = url.url;
                     string expanded = url.url;
                     if (url.display_url())
