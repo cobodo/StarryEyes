@@ -104,6 +104,11 @@ namespace StarryEyes.Anomaly.TwitterApi.DataModels
             {
                 this.Entities = new TwitterEntity[0];
             }
+
+            if (root.possibly_sensitive())
+            {
+                this.PossiblySensitive = root.possibly_sensitive;
+            }
         }
 
         public bool GenerateFromJson { get; private set; }
@@ -236,6 +241,9 @@ namespace StarryEyes.Anomaly.TwitterApi.DataModels
             }
         }
         // ReSharper restore InconsistentNaming
+
+        [NotNull]
+        public bool PossiblySensitive { get; set; } = false;
 
         [NotNull]
         public string GetEntityAidedText(EntityDisplayMode displayMode = EntityDisplayMode.DisplayText)

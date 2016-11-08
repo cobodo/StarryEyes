@@ -94,7 +94,8 @@ namespace StarryEyes.Models.Databases
                 UserId = status.User.Id,
                 BaseUserId = orig.User.Id,
                 RetweeterId = status.RetweetedOriginal != null ? status.User.Id : (long?)null,
-                RetweetOriginalUserId = status.RetweetedOriginal != null ? status.RetweetedOriginal.User.Id : (long?)null
+                RetweetOriginalUserId = status.RetweetedOriginal != null ? status.RetweetedOriginal.User.Id : (long?)null,
+                PossiblySensitive = status.PossiblySensitive
             };
             var ent = status.Entities.Guard().Select(e => Map<DatabaseStatusEntity>(status.Id, e));
             return Tuple.Create(dbs, ent);

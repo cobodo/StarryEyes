@@ -474,6 +474,9 @@ namespace StarryEyes.ViewModels.Timelines.Statuses
             get { return Model.Images != null ? Images.FirstOrDefault() : null; }
         }
 
+        public string NsfwText { get { return Model.Status.PossiblySensitive ? "♥" : ""; } }
+        public int NsfwTextWidth { get { return Model.Status.PossiblySensitive ? 20 : 0; } }
+
         /// <summary>
         ///     For animating helper
         /// </summary>
