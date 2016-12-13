@@ -15,7 +15,7 @@ namespace Detective
         {
             this.Opacity = 0.2;
             InitializeComponent();
-            isSendFeedback.Checked = true;
+            isSendFeedback.Checked = false;
             this.Load += OnFormLoad;
         }
 
