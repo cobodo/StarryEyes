@@ -25,9 +25,10 @@ namespace StarryEyes.Anomaly.Utils
             {
                 if (endIndex < entity.StartIndex)
                 {
+                    var start = entity.StartIndex < escaped.Length ? entity.StartIndex : escaped.Length;
                     // return raw string
                     yield return new TextEntityDescription(ParsingExtension.ResolveEntity(
-                        escaped.SurrogatedSubstring(endIndex, entity.StartIndex - endIndex)));
+                        escaped.SurrogatedSubstring(endIndex, start - endIndex)));
                 }
                 if (escaped.Length <= entity.StartIndex || escaped.Length < entity.EndIndex)
                 {
