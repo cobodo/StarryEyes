@@ -23,18 +23,17 @@ namespace StarryEyes.Anomaly.Utils
             // distinct by startindex ignores extended_entities.
             foreach (var entity in entities.Distinct(e => e.StartIndex).OrderBy(e => e.StartIndex))
             {
-                if (endIndex < entity.StartIndex)
-                {
-                    var start = entity.StartIndex < escaped.Length ? entity.StartIndex : escaped.Length;
-                    // return raw string
-                    yield return new TextEntityDescription(ParsingExtension.ResolveEntity(
-                        escaped.SurrogatedSubstring(endIndex, start - endIndex)));
-                }
                 if (escaped.Length <= entity.StartIndex || escaped.Length < entity.EndIndex)
                 {
                     // Twitter rarely gives entities of extended_tweet for text of compatibility mode.
                     // We need paranoiac test here.
                     continue;
+                }
+                if (endIndex < entity.StartIndex)
+                {
+                    // return raw string
+                    yield return new TextEntityDescription(ParsingExtension.ResolveEntity(
+                        escaped.SurrogatedSubstring(endIndex, entity.StartIndex - endIndex)));
                 }
                 // get entitied text
                 var body = ParsingExtension.ResolveEntity(escaped.SurrogatedSubstring(
