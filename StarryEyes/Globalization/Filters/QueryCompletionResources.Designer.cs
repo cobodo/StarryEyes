@@ -394,6 +394,15 @@ namespace StarryEyes.Globalization.Filters {
         }
         
         /// <summary>
+        ///   [Boolean] This is retweet of NSFW tweet に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VariableNsfwrt {
+            get {
+                return ResourceManager.GetString("VariableNsfwrt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [Boolean] This is retweet に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string VariableRetweet {

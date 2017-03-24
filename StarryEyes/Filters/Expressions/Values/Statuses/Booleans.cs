@@ -52,6 +52,32 @@ namespace StarryEyes.Filters.Expressions.Values.Statuses
         }
     }
 
+    public sealed class StatusHasEntity : ValueBase
+    {
+        public override IEnumerable<FilterExpressionType> SupportedTypes
+        {
+            get
+            {
+                yield return FilterExpressionType.Boolean;
+            }
+        }
+
+        public override Func<TwitterStatus, bool> GetBooleanValueProvider()
+        {
+            return st => st.Entities.Any();
+        }
+
+        public override string GetBooleanSqlQuery()
+        {
+            return "(SELECT COUNT(Id) FROM StatusEntity WHERE StatusEntity.ParentId = Status.Id) > 0";
+        }
+
+        public override string ToQuery()
+        {
+            return "has_entity";
+        }
+    }
+
     public sealed class StatusHasMedia : ValueBase
     {
         public override IEnumerable<FilterExpressionType> SupportedTypes
@@ -82,6 +108,32 @@ namespace StarryEyes.Filters.Expressions.Values.Statuses
         public override string ToQuery()
         {
             return "has_media";
+        }
+    }
+
+    public sealed class StatusIsPossiblySensitiveRetweet : ValueBase
+    {
+        public override IEnumerable<FilterExpressionType> SupportedTypes
+        {
+            get
+            {
+                yield return FilterExpressionType.Boolean;
+            }
+        }
+
+        public override Func<TwitterStatus, bool> GetBooleanValueProvider()
+        {
+            return st => st.RetweetedOriginal != null && st.RetweetedOriginal.PossiblySensitive;
+        }
+
+        public override string GetBooleanSqlQuery()
+        {
+            return "0";
+        }
+
+        public override string ToQuery()
+        {
+            return "nsfwrt";
         }
     }
 }

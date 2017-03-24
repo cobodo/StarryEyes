@@ -678,8 +678,12 @@ namespace StarryEyes.Filters.Parsing
                 case "source":
                 case "client":
                     return new StatusSource();
+                case "has_entity":
+                    return new StatusHasEntity();
                 case "has_media":
                     return new StatusHasMedia();
+                case "nsfwrt":
+                    return new StatusIsPossiblySensitiveRetweet();
                 default:
                     throw CreateUnexpectedTokenError(value, value + " " + reader.RemainQuery);
             }

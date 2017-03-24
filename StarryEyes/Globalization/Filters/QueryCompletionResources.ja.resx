@@ -228,6 +228,9 @@
   <data name="VariableList" xml:space="preserve">
     <value>[Set](list.user.slug) リストに登録されているユーザー</value>
   </data>
+  <data name="VariableNsfwrt" xml:space="preserve">
+    <value>[Boolean] NSFWツイートのRT</value>
+  </data>
   <data name="VariableRetweet" xml:space="preserve">
     <value>[Boolean] リツイートであるか</value>
   </data>
